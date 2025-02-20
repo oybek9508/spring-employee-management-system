@@ -16,6 +16,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "leave_id", referencedColumnName = "id")
+    private Leave leave;
+
     private String firstName;
 
     private String lastName;
@@ -28,4 +32,12 @@ public class Employee {
     private Department department;
 
     private int age;
+
+    public Employee setLeave(Leave leave) {
+        this.leave = leave;
+
+        return this;
+    }
 }
+
+
